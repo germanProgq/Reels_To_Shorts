@@ -44,9 +44,15 @@ cd instagram-to-youtube-shorts
 ```
 
 ### 2. Create and Activate using scripts
-
+#### Windows:
 ```bash
 ./setup.bat
+```
+
+#### MacOs/Linux:
+```bash
+chmod + setup.sh
+./setup.sh
 ```
 ## Usage
 
@@ -56,10 +62,16 @@ To start downloading Instagram videos:
 
 Make sure to have replaced the [info](info_alike) with info.py file, where you set all the needed information (all of it is inside the info_alike file)
 
+##### Windows:
 ```bash
 ./start.bat
 ```
 
+###### MacOs/Linus:
+```bash
+chmod + start.sh
+./start.sh
+```
 - The script will log in to Instagram, search for posts with the specified hashtag, and download videos that meet the filtering criteria.
 
 
