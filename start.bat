@@ -4,4 +4,5 @@ call venv\Scripts\activate
 
 python main.py start --hashtag funny
 
-pause   
+cls
+pause

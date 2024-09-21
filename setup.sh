@@ -11,5 +11,6 @@ pip install -r requirements.txt
 
 echo "Setup complete. To start the project, run:"
 echo "./start.sh"
+clear
 
 exec $SHELL

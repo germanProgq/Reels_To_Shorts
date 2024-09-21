@@ -3,13 +3,27 @@ import requests
 from moviepy.editor import VideoFileClip
 
 def download_video(url, target_directory, filename):
-    response = requests.get(url, stream=True)
+    if not os.path.exists(target_directory):
+        os.makedirs(target_directory)
+    
     file_path = os.path.join(target_directory, filename)
     
-    with open(file_path, 'wb') as file:
-        for chunk in response.iter_content(chunk_size=8192):
-            file.write(chunk)
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        
+        with open(file_path, 'wb') as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    file.write(chunk)
+        print(f"Video downloaded successfully: {file_path}")
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading video: {e}")
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
+    return file_path
 def filter_and_download_videos(video_urls, target_directory, max_videos):
     if not os.path.exists(target_directory):
         os.makedirs(target_directory)
